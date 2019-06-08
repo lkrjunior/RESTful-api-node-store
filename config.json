@@ -16,5 +16,23 @@
     "date": "2019-06-08T09:10:00",
     "href": "http://localhost:3000/votes/9",
     "id": 9
+  },
+  "territorio:3": {
+    "eixoX": 10,
+    "eixoY": 10,
+    "href": "http://localhost:3000/territorio/3",
+    "id": 3
+  },
+  "territorio:2": {
+    "eixoX": 10,
+    "eixoY": 10,
+    "href": "http://localhost:3000/territorio/2",
+    "id": "territorio:2"
+  },
+  "territorio:1": {
+    "eixoX": 10,
+    "eixoY": 10,
+    "href": "http://localhost:3000/territorio/territorio:1",
+    "id": "territorio:1"
   }
 }

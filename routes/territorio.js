@@ -26,8 +26,15 @@ router.get('/:id', function(req, res, next)
     console.log(territorio);
 
     res.setHeader('Content-Type', 'application/json');
-    res.status(200);
-    res.send(JSON.stringify(territorio));
+    if (territorio != null)
+    {
+        res.status(200);
+        res.send(JSON.stringify(territorio));
+    }
+    else
+    {
+        res.status(404).send('Território não encontrado!')
+    }
 });
 
 router.delete('/:id', function(req, res, next)

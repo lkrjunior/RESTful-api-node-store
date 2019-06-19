@@ -11,18 +11,31 @@ router.put('/', function(req, res) {
     let sonda = req.body;
 
     let territorio = store.get(sonda.idTerritorio);
-    
+
     res.setHeader('Content-Type', 'application/json');
     if (territorio == null)
     {    
-        res.status(400);
+        res.status(400).send('Território não conhecido!');
     }
     else
     {
-        res.status(200);
-    }
-    res.send(JSON.stringify(sonda));
+        if (sonda.eixoX > territorio.eixoX)
+        {
+            res.status(400).send('Sonda posicionada em um lugar não permitido: eixoX');
+        }
+        else if (sonda.eixoY > territorio.eixoY)
+        {
+            res.status(400).send('Sonda posicionada em um lugar não permitido: eixoY');
+        }
+        
+        let generatedId =  `${RESOURCE}:${Math.floor(Math.random()*10)}`;
+        sonda.href = `${URL}/sonda/${generatedId}`;
+        sonda.id = generatedId;
+        store.set(generatedId.toString(), sonda);
 
+        res.status(200).send(JSON.stringify(sonda));
+    }
+    
 });
 
 module.exports = router;

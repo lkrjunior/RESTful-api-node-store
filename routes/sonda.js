@@ -38,4 +38,22 @@ router.put('/', function(req, res) {
     
 });
 
+router.get('/:id', function(req, res, next)
+{
+    let id = req.params['id'];
+    let sonda = store.get(id.toString());
+    console.log(sonda);
+
+    res.setHeader('Content-Type', 'application/json');
+    if (sonda != null)
+    {
+        res.status(200);
+        res.send(JSON.stringify(sonda));
+    }
+    else
+    {
+        res.status(404).send('Sonda não encontrada!')
+    }
+});
+
 module.exports = router;

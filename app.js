@@ -8,7 +8,7 @@ var statusRouter = require('./routes/status');
 var votesRouter = require('./routes/votes');
 var territorioRouter = require('./routes/territorio');
 var sondaRouter = require('./routes/sonda');
-//var votesRouter = require('./routes/comandos');
+var comandosRouter = require('./routes/comandos');
 
 var app = express();
 
@@ -26,6 +26,7 @@ app.use('/status', statusRouter);
 app.use('/votes', votesRouter);
 app.use('/territorio', territorioRouter);
 app.use('/sonda', sondaRouter);
+app.use('/comandos', comandosRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

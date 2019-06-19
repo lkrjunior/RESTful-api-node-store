@@ -29,18 +29,35 @@ router.post('/', function(req, res) {
         switch (comando.direcao) 
         {
             case 'up':
+                sonda.eixoX += 1;
                 break;
             case 'down':
+                sonda.eixoX -= 1;
                 break;
             case 'left':
+                sonda.eixoY -= 1;
                 break;
             case 'right':
+                sonda.eixoY += 1;
                 break;
             default:
+                res.status(400).send('Comando não conhecido!');
                 break;
         }
         
-        res.status(200).send(JSON.stringify(sonda));
+        if (sonda.eixoX > territorio.eixoX || sonda.eixoX < 0)
+        {
+            res.status(400).send('Território não suporta esta movimentação. eixoX!');
+        }
+        else if (sonda.eixoY > territorio.eixoY || sonda.eixoY < 0)
+        {
+            res.status(400).send('Território não suporta esta movimentação. eixoY!');
+        }
+        else
+        {
+            store.set(sonda.id, sonda);
+            res.status(200).send(JSON.stringify(sonda));
+        }
     }
     
 });

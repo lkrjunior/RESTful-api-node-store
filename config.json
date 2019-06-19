@@ -48,7 +48,7 @@
     "id": "territorio:5"
   },
   "sonda:9": {
-    "eixoX": 5,
+    "eixoX": 4,
     "eixoY": 5,
     "idTerritorio": "territorio:5",
     "href": "http://localhost:3000/sonda/sonda:9",
